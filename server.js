@@ -9,7 +9,7 @@ const weatherData = require('./data/weather.json');
 const server = express();
 server.use(cors());
 
-const PORT =3011;
+const PORT =process.env.PORT;
 
 
 // http://localhost:3011/getData
