@@ -26,8 +26,8 @@ const PORT =process.env.PORT;
 
 
 
-// http://localhost:3011/
-// http://localhost:3011/weather?searchQuery=Amman
+// http://localhost:3014/
+// http://localhost:3014/weather?searchQuery=Amman
 server.get('/weather',(req,res)=>{
     // res.send('Hello from the home route')
   
@@ -55,12 +55,12 @@ function Forcast(day){
 
 
 
-// http://localhost:3011/test
+// http://localhost:3014/test
 server.get('/test',(req,res) => {
     res.send('Hi from test route');
 })
 
-// http:localhost:3011/***** */
+// http:localhost:3014/***** */
 server.get('*',(req,res)=>{
     res.status(404).send('Sorry, page not found');
 })
