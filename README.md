@@ -14,3 +14,4 @@
 ## 4. To Run the server npm start 
 ## 5. kill $(lsof -t -i:3000)  to kill the PORT 
 ## 6.   npm i dotenv  to install env then connect with Horoko
+## 7. npm i nodemon -g
