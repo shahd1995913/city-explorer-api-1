@@ -9,7 +9,7 @@
 
 # The Steps By STEP
 ## 1.  touch server.js
-## 2.   npm init -y 
+## 2. npm init -y 
 ## 3. npm i express
 ## 4. To Run the server npm start 
 ## 5. kill $(lsof -t -i:3000)  to kill the PORT 
