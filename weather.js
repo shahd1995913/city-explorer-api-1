@@ -1,23 +1,39 @@
 const axios = require("axios");
 
-let weatherFunction = async function (req, res) {
-  const lat = req.query.lat;
-  const lon = req.query.lon;
-  const key = process.env.WEATHER_API_KEY;
-  let finalResult = [];
 
-  let result = await axios.get(
-    `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`
-  );
-  finalResult = result.data.data.map((item) => {
-    return new Forecast(item);
-  });
-  res.status(200).send(finalResult);
-};
+function weatherFunction (req,res)
+{
 
-function Forecast(el) {
-  this.description = `Low of ${el.low_temp}, high of ${el.high_temp} with ${el.weather.description}`;
-  this.date = `${el.valid_date}`;
+const name = req.query.name;
+
+let weatherURL =`https://api.weatherbit.io/v2.0/forecast/daily?city=${name}&key=${process.env.WEATHER_API_KEY}`;
+
+axios
+.get(weatherURL)
+.then(newArray => {
+    let x = newArray.data.data.map((element)=>{
+        return new WeatherClass(element)
+    })
+    res.send(x)
+} )
+.catch(e =>{console.log('Error in handling the weather')})
+
+  
 }
 
-module.exports = weatherFunction;
+class WeatherClass
+{
+
+constructor(i){
+this.date = i.valid_date
+this.description =`The Low  Temp of ${ i.low_temp}, and The high  Temp of ${ i.high_temp} with  ${ i.weather.description}`
+
+
+}
+
+
+}
+
+
+
+module.exports =  weatherFunction
